@@ -10,14 +10,14 @@ public class CalculatorController {
 
     @RequestMapping("/fib/calc")
     @CrossOrigin
-    public int getResult(@RequestParam(value="n") int n){
+    public long getResult(@RequestParam(value="n") int n){
         return fib(n);
     }
 
     // Calculate fibonacci number with loop
-    private int fib(int n)
+    private long fib(long n)
     {
-        int n1 = 0, n2 = 1, n3 = 1;
+        long n1 = 0, n2 = 1, n3 = 1;
         if (n == 0){
             return n1;
         }
@@ -26,12 +26,12 @@ public class CalculatorController {
         }
         for(int i = 2; i < n; i++) {
             n3 = n1 + n2;
-            if (n3 < Integer.MAX_VALUE) {
+            if (n3 < Long.MAX_VALUE) {
                 n1 = n2;
                 n2 = n3;
             }
             else {
-                return  Integer.MAX_VALUE;
+                return  Long.MAX_VALUE;
             }
         }
         return n3;

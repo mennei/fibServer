@@ -11,17 +11,29 @@ public class CalculatorController {
     @RequestMapping("/fib/calc")
     @CrossOrigin
     public int getResult(@RequestParam(value="n") int n){
-        if (n > 10){
-            throw new UnsupportedOperationException("Request number to big");
-        }
         return fib(n);
     }
 
-    // Calculate Fiboncci number with recursion
+    // Calculate fibonacci number with loop
     private int fib(int n)
     {
-        if (n <= 1)
-            return n;
-        return fib(n-1) + fib(n-2);
+        int n1 = 0, n2 = 1, n3 = 1;
+        if (n == 0){
+            return n1;
+        }
+        if (n == 1){
+            return n2;
+        }
+        for(int i = 2; i < n; i++) {
+            n3 = n1 + n2;
+            if (n3 < Integer.MAX_VALUE) {
+                n1 = n2;
+                n2 = n3;
+            }
+            else {
+                return  Integer.MAX_VALUE;
+            }
+        }
+        return n3;
     }
 }

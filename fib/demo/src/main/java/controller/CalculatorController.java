@@ -1,5 +1,6 @@
 package controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
 
     @RequestMapping("/fib/calc")
+    @CrossOrigin
     public int getResult(@RequestParam(value="n") int n){
         if (n > 10){
             throw new UnsupportedOperationException("Request number to big");
